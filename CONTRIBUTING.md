@@ -81,7 +81,6 @@ Para garantir que as regras acima sejam cumpridas, utilizaremos:
 ---
 
 ## 6. Comunicação e Decisões
-* **Dúvidas Técnicas:** Devem ser discutidas nas Issues ou no canal de dev.
 * **Mudança de Requisito:** Se algo no diagrama precisar mudar durante o código, a alteração deve ser documentada no repositório de documentação antes da implementação final.
 
 ---
