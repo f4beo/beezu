@@ -1,0 +1,4 @@
+# Dependências (Node/Next.js)
+node_modules/
+.pnp
+.pnp.js
