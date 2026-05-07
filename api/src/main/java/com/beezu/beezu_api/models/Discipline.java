@@ -15,6 +15,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,6 +37,8 @@ public class Discipline {
 	private List<Activity> activities = new ArrayList<>();
 	@OneToMany(mappedBy = "discipline", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UserDiscipline> enrollments = new ArrayList<>();
+	@OneToOne(mappedBy = "discipline", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Hive hive;
 
 	
 	public Discipline() {
@@ -61,7 +64,7 @@ public class Discipline {
 			throw new IllegalArgumentException("The activity cannot be null");
 		}
 		if(!activities.contains(activity)) {
-			throw new ActivityNotExistsException("The activity does not exist");
+			throw new ActivityNotExistsException("The activity does not exists");
 		}
 		activities.remove(activity);
 		activity.setDiscipline(null);
@@ -71,7 +74,7 @@ public class Discipline {
 			throw new IllegalArgumentException("The enrollment cannot be null");
 		}
 		if(enrollments.contains(enrollment)) {
-			throw new EnrollmentAlreadyExistsException("The enrollment already exist");
+			throw new EnrollmentAlreadyExistsException("The enrollment already exists");
 		}
 		enrollments.add(enrollment);
 		enrollment.setDiscipline(this);
@@ -82,7 +85,7 @@ public class Discipline {
 			throw new IllegalArgumentException("The enrollment cannot be null");
 		}
 		if(!enrollments.contains(enrollment)) {
-			throw new EnrollmentNotExistsException("The enrollment does not exist");
+			throw new EnrollmentNotExistsException("The enrollment does not exists");
 		}
 		enrollments.remove(enrollment);
 		enrollment.setDiscipline(null);
@@ -129,6 +132,12 @@ public class Discipline {
 
 	public List<UserDiscipline> getEnrollments() {
 		return enrollments;
+	}
+	
+	
+
+	public Hive getHive() {
+		return hive;
 	}
 
 	@Override
