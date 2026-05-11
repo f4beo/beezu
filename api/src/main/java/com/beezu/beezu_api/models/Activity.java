@@ -21,14 +21,14 @@ public class Activity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "title")
+	@Column(name = "title", nullable = false)
 	private String title;
 	@Column(name = "description")
 	private String description;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "activity_type", nullable = false)
 	private ActivityType activityType;
-	@Column(name = "deadline", nullable = false)
+	@Column(name = "deadline")
 	private LocalDateTime deadline;
 	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createdAt;
