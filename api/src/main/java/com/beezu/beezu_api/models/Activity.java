@@ -1,5 +1,6 @@
 package com.beezu.beezu_api.models;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -17,7 +18,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_activity")
-public class Activity {
+public class Activity  implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
