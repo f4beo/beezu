@@ -7,6 +7,7 @@ import java.util.List;
 import com.beezu.beezu_api.exceptions.UserAlreadyEnrolledException;
 import com.beezu.beezu_api.exceptions.UserNotEnrolledDisciplineException;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class User {
 	private String name;
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@Column(name = "password", nullable = false)
 	private String password;
 	@Column(name = "created_at", nullable = false)
@@ -70,8 +72,8 @@ public class User {
 		return id;
 	}
 
-	public String getPassword() {
-		return password;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public LocalDateTime getCreatedAt() {
