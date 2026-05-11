@@ -9,10 +9,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "tb_user_discipline")
-public class UserDiscipline {
-	
+public class UserDiscipline implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@EmbeddedId
 	private UserDisciplineId id;
 	@ManyToOne
