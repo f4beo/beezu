@@ -1,28 +1,20 @@
 package com.beezu.beezu_api.models;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 import com.beezu.beezu_api.models.enums.ActivityStatus;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_user_activity")
-public class UserActivity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class UserActivity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	@EmbeddedId
+	private UserActivityId id;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "activity_status", nullable = false)
 	private ActivityStatus activityStatus;
@@ -33,9 +25,11 @@ public class UserActivity {
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	@MapsId("userId")
 	private User user;
 	@ManyToOne
 	@JoinColumn(name = "activity_id")
+	@MapsId("activityId")
 	private Activity activity;
 	
 	public UserActivity() {
@@ -85,7 +79,7 @@ public class UserActivity {
 		this.activity = activity;
 	}
 
-	public Long getId() {
+	public UserActivityId getId() {
 		return id;
 	}
 
