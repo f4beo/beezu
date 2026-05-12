@@ -1,11 +1,13 @@
 package com.beezu.beezu_api.models;
 
+import java.io.Serializable;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import com.beezu.beezu_api.exceptions.ActivityNotExistsException;
+import com.beezu.beezu_api.exceptions.EnrollmentAlreadyExistsException;
 import com.beezu.beezu_api.exceptions.EnrollmentNotExistsException;
 
 import jakarta.persistence.CascadeType;
@@ -20,7 +22,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_discipline")
-public class Discipline {
+public class Discipline implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -50,6 +53,7 @@ public class Discipline {
 		this.professor = professor;
 		this.description = description;
 		this.disciplineCode = generateAccessCode();
+		this.hive = new Hive(this);
 	}
 	
 	public void addActivity(Activity activity) {
