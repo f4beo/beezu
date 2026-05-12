@@ -24,11 +24,11 @@ public class UserActivity implements Serializable {
 	private Integer earnedHoney;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id", nullable = false)
 	@MapsId("userId")
 	private User user;
 	@ManyToOne
-	@JoinColumn(name = "activity_id")
+	@JoinColumn(name = "activity_id",nullable = false)
 	@MapsId("activityId")
 	private Activity activity;
 	
@@ -36,10 +36,11 @@ public class UserActivity implements Serializable {
 		
 	}
 	
-	public UserActivity(User user, Activity activity,ActivityStatus activityStatus) {
+	public UserActivity(User user, Activity activity) {
 		this.user = user;
 		this.activity = activity;
-		this.activityStatus = activityStatus;
+		this.activityStatus = ActivityStatus.PENDING;
+		this.id = new UserActivityId(user.getId(), activity.getId());
 	}
 	public void markAsCompleted() {
 		if(activityStatus == ActivityStatus.COMPLETED) return;
@@ -85,6 +86,10 @@ public class UserActivity implements Serializable {
 
 	public LocalDateTime getCompletedAt() {
 		return completedAt;
+	}
+
+	public Integer getEarnedHoney() {
+		return earnedHoney;
 	}
 
 	@Override
