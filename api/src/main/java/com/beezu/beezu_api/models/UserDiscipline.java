@@ -2,6 +2,7 @@ package com.beezu.beezu_api.models;
 
 import com.beezu.beezu_api.models.constraints.UserDisciplineId;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -10,6 +11,7 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_user_discipline")
@@ -19,14 +21,15 @@ public class UserDiscipline implements Serializable {
 	private UserDisciplineId id;
 	@ManyToOne
 	@MapsId("userId")
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 	
 	@ManyToOne
 	@MapsId("disciplineId")
-	@JoinColumn(name = "discipline_id")
+	@JoinColumn(name = "discipline_id", nullable = false)
 	private Discipline discipline;
 	
+	@Column(name = "is_moderator", nullable = false)
 	private boolean isModerator;
 	
 	public UserDiscipline() {
@@ -36,6 +39,7 @@ public class UserDiscipline implements Serializable {
 	public UserDiscipline(User user, Discipline discipline) {
 		this.user = user;
 		this.discipline = discipline;
+		this.id = new UserDisciplineId(user.getId(), discipline.getId());
 		this.isModerator = false;
 	}
 	
@@ -72,6 +76,24 @@ public class UserDiscipline implements Serializable {
 	public boolean isModerator() {
 		return isModerator;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserDiscipline other = (UserDiscipline) obj;
+		return Objects.equals(id, other.id);
+	}
+	
 	
 	
 	
