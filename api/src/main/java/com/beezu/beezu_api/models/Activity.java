@@ -10,9 +10,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -34,9 +36,12 @@ public class Activity  implements Serializable {
 	private LocalDateTime deadline;
 	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createdAt;
+	
 	@ManyToOne
+	@JoinColumn(name = "discipline_id", nullable = false)
 	private Discipline discipline;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false) 
 	private User createdBy;
 	
 	public Activity() {
@@ -89,6 +94,8 @@ public class Activity  implements Serializable {
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
