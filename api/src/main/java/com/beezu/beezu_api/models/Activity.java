@@ -95,7 +95,12 @@ public class Activity  implements Serializable {
 		return createdAt;
 	}
 	
-	
+	public User getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
