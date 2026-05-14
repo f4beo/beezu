@@ -10,6 +10,6 @@ import com.beezu.beezu_api.models.enums.ActivityType;
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
 	
 	List<Activity> findByDisciplineId(Long disciplineID);
-	List<Activity> findByActiviyType(ActivityType type);
+	List<Activity> findByActivityType(ActivityType type);
 
 }
