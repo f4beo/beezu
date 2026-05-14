@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.beezu.beezu_api.dtos.ActivityResponseDTO;
 import com.beezu.beezu_api.dtos.DisciplineRequestDTO;
 import com.beezu.beezu_api.dtos.DisciplineResponseDTO;
+import com.beezu.beezu_api.dtos.DisciplineUpdateDTO;
 import com.beezu.beezu_api.exceptions.DisciplineNotFoundException;
 import com.beezu.beezu_api.exceptions.UserNotFoundException;
 import com.beezu.beezu_api.mappers.ActivityMapper;
@@ -72,7 +73,7 @@ public class DisciplineService {
 	    return disciplineActivities.stream().map(ActivityMapper::toResponse).toList();
 	}
 	
-	public DisciplineResponseDTO updateDiscipline(Long id, DisciplineRequestDTO dto) {
+	public DisciplineResponseDTO updateDiscipline(Long id, DisciplineUpdateDTO dto) {
 		if(dto == null) {
 			throw new IllegalArgumentException("The request cannot be null");
 		}
@@ -92,10 +93,10 @@ public class DisciplineService {
     	Discipline discipline = disciplineRepository.findById(id).orElseThrow(() -> new DisciplineNotFoundException("Discipline not found"));
     	return discipline;
     }
-    private void updateData(Discipline entity, DisciplineRequestDTO discipline) {
-		entity.setName(discipline.name());
-		entity.setDescription(discipline.description());	
-		entity.setProfessor(discipline.professor());
+    private void updateData(Discipline entity, DisciplineUpdateDTO dto) {
+		entity.setName(dto.name());
+		entity.setDescription(dto.description());	
+		entity.setProfessor(dto.professor());
 	}
 	
 
