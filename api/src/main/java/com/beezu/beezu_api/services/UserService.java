@@ -66,12 +66,9 @@ public class UserService {
 	}
 
     private void updateData(User entity, UserRequestDTO user) {
-    	if (user.email() != null && !user.email().isBlank()) {
 		entity.setName(user.name());
-    	}
-    	if (user.email() != null && !user.email().isBlank()) {
 		entity.setEmail(user.email());
-    	}
+  
 	}
     
     private User findEntityById(Long id) {
