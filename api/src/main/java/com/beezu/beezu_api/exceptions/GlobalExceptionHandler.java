@@ -34,17 +34,12 @@ public class GlobalExceptionHandler {
 		return buildError(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected error", ex, request);
 	}
 	
-	@ExceptionHandler(IllegalArgumentException.class)
-	public ResponseEntity<StandardError> illegalArgument(
-	        IllegalArgumentException ex,
-	        HttpServletRequest request) {
 
-	    return buildError(
-	            HttpStatus.BAD_REQUEST,
-	            "Invalid request",
-	            ex,
-	            request
-	    );
+	
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ResponseEntity<StandardError> validation(MethodArgumentNotValidException ex, HttpServletRequest request) {
+	    String message = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
+	    return buildError(HttpStatus.BAD_REQUEST, "Validation error", new Exception(message), request);
 	}
 
 	private ResponseEntity<StandardError> buildError(HttpStatus status, String error, Exception ex,
