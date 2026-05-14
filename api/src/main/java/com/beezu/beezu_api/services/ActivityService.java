@@ -6,10 +6,11 @@ import org.springframework.stereotype.Service;
 
 import com.beezu.beezu_api.dtos.ActivityRequestDTO;
 import com.beezu.beezu_api.dtos.ActivityResponseDTO;
+import com.beezu.beezu_api.dtos.ActivityUpdateDTO;
 import com.beezu.beezu_api.exceptions.ActivityNotFoundException;
-import com.beezu.beezu_api.exceptions.UserNotFoundException;
 import com.beezu.beezu_api.exceptions.DisciplineNotFoundException;
 import com.beezu.beezu_api.exceptions.InvalidActivityDeadlineException;
+import com.beezu.beezu_api.exceptions.UserNotFoundException;
 import com.beezu.beezu_api.mappers.ActivityMapper;
 import com.beezu.beezu_api.models.Activity;
 import com.beezu.beezu_api.models.Discipline;
@@ -59,7 +60,7 @@ public class ActivityService {
 		return ActivityMapper.toResponse(activity);
 	}
 	
-	public ActivityResponseDTO updateActivity(Long id, ActivityRequestDTO dto) {
+	public ActivityResponseDTO updateActivity(Long id, ActivityUpdateDTO dto) {
 		if(dto == null) {
 			throw new IllegalArgumentException("The request cannot be null");
 		}
@@ -84,11 +85,19 @@ public class ActivityService {
     	return activity;
     }
     
-    private void updateData(Activity entity, ActivityRequestDTO activity) {
-		entity.setTitle(activity.title());
-		entity.setDescription(activity.description());	
-		entity.setActivityType(activity.type());
-		entity.setDeadline(activity.deadline());
+    private void updateData(Activity entity, ActivityUpdateDTO activity) {
+    	if(activity.title() !=null) {
+    		entity.setTitle(activity.title());		
+    	}
+    	if(activity.description() != null) {
+    		entity.setDescription(activity.description());			
+    	}
+    	if(activity.type() != null) {
+    		entity.setActivityType(activity.type());
+    	}
+    	if(activity.deadline() != null) {
+    		entity.setDeadline(activity.deadline());  		
+    	}
 	}
 
 }
