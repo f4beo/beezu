@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.beezu.beezu_api.dtos.UserRequestDTO;
 import com.beezu.beezu_api.dtos.UserResponseDTO;
+import com.beezu.beezu_api.dtos.UserUpdateDTO;
 import com.beezu.beezu_api.exceptions.EmailAlreadyRegisteredException;
 import com.beezu.beezu_api.exceptions.UserNotFoundException;
 import com.beezu.beezu_api.mappers.UserMapper;
@@ -42,7 +43,7 @@ public class UserService {
 		return UserMapper.toResponse(user);		
 	}
 	
-	public UserResponseDTO updateUser(Long id, UserRequestDTO dto) {
+	public UserResponseDTO updateUser(Long id, UserUpdateDTO dto) {
 		if(dto == null) {
 			throw new IllegalArgumentException("The request cannot be null");
 		}
@@ -65,9 +66,13 @@ public class UserService {
 		userRepository.delete(user);
 	}
 
-    private void updateData(User entity, UserRequestDTO user) {
-		entity.setName(user.name());
-		entity.setEmail(user.email());
+    private void updateData(User entity, UserUpdateDTO dto) {
+    	if(dto.name() != null && !dto.name().isBlank()) {
+    		entity.setName(dto.name());	
+    	}
+    	if(dto.email() != null && !dto.email().isBlank()) {
+    		entity.setEmail(dto.email());
+    	}   	
   
 	}
     
