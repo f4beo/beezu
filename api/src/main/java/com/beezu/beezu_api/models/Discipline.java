@@ -143,6 +143,11 @@ public class Discipline implements Serializable {
 	public Hive getHive() {
 		return hive;
 	}
+	
+
+	public void setHive(Hive hive) {
+		this.hive = hive;
+	}
 
 	@Override
 	public int hashCode() {
