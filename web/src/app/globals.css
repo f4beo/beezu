@@ -1,49 +1,131 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* font sizes */
+  --text-xs: 0.75rem; /* 12px - Legendas/Labels */
+  --text-sm: 0.875rem; /* 14px - Texto secundário */
+  --text-base: 1rem; /* 16px - Texto principal (padrão) */
+  --text-lg: 1.25rem; /* 20px - Subtítulos */
+  --text-xl: 1.5rem; /* 24px - Títulos menores */
+  --text-2xl: 2rem; /* 32px - Títulos de seção */
+  --text-3xl: 3rem; /* 48px - Hero / Dashboard */
+
+  /* weights */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+
+  /* line height */ 
+  /* --leading-tight: 1.2; */
+  /* --leading-base: 1.5; */
+
+  /* color semantic variables */ 
+  --primary-default: var(--primary-500);
+  --main-bg: var(--primary-200);
+  --main-bg-contrast: var(--primary-300);
+
+  --bg-dark: var(--secondary-800);
+  --bg-soft-dark: var(--secondary-700);
+
+  --text-default: var(--secondary-900);
+  --text-light: var(--neutral-500);
+  --fill: var(--primary-100);
+  --fill-outline: var(--neutral-200);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* colors */
+  --neutral-100: #F4F4F2FF;
+  --neutral-200: #E2E1D7FF;
+  --neutral-300: #CAC9B9FF;
+  --neutral-400: #A9A893FF;
+  --neutral-500: #77765EFF;
+  --neutral-600: #53533BFF;
+  --neutral-700: #403F22FF;
+  --neutral-800: #2C2B15FF;
+  --neutral-900: #171706FF;
+  --primary-100: #FFFBEDFF;
+  --primary-200: #FFF1C3FF;
+  --primary-300: #FADF85FF;
+  --primary-400: #F9D254FF;
+  --primary-500: #F7C41DFF;
+  --primary-600: #C29607FF;
+  --primary-700: #876804FF;
+  --primary-800: #574303FF;
+  --primary-900: #281F01FF;
+  --secondary-100: #FBF0E7FF;
+  --secondary-200: #F3D3B6FF;
+  --secondary-300: #EAB686FF;
+  --secondary-400: #E29856FF;
+  --secondary-500: #DA7B25FF;
+  --secondary-600: #A9601DFF;
+  --secondary-700: #794415FF;
+  --secondary-800: #49290CFF;
+  --secondary-900: #180E04FF;
+  --accent-good-100: #EAFFE0FF;
+  --accent-good-200: #C9F8B4FF;
+  --accent-good-300: #9DEA7AFF;
+  --accent-good-400: #6FE439FF;
+  --accent-good-500: #59D221FF;
+  --accent-good-600: #3AA309FF;
+  --accent-good-700: #2B7D05FF;
+  --accent-good-800: #1F5903FF;
+  --accent-good-900: #0F3000FF;
+  --accent-warning-100: #FFF5E6FF;
+  --accent-warning-200: #FFE5C2FF;
+  --accent-warning-300: #FAC67DFF;
+  --accent-warning-400: #FFB247FF;
+  --accent-warning-500: #ED9111FF;
+  --accent-warning-600: #BC7005FF;
+  --accent-warning-700: #975A06FF;
+  --accent-warning-800: #683F05FF;
+  --accent-warning-900: #382100FF;
+  --accent-bad-100: #FFE5E2FF;
+  --accent-bad-200: #FDC1B7FF;
+  --accent-bad-300: #FA9484FF;
+  --accent-bad-400: #F46D58FF;
+  --accent-bad-500: #ED381CFF;
+  --accent-bad-600: #BF1F06FF;
+  --accent-bad-700: #9F200CFF;
+  --accent-bad-800: #701406FF;
+  --accent-bad-900: #420A02FF;
+  --accent-info-100: #E1EDFAFF;
+  --accent-info-200: #B3D2F5FF;
+  --accent-info-300: #7DB4F2FF;
+  --accent-info-400: #4E97EAFF;
+  --accent-info-500: #287EE0FF;
+  --accent-info-600: #0E54A4FF;
+  --accent-info-700: #073D7CFF;
+  --accent-info-800: #042952FF;
+  --accent-info-900: #011831FF;
+  
 }
 
-html {
-  height: 100%;
+h1, h2, h3, h4, p {
+  margin: 0; 
+  font-family: var(--font-roboto-mono);
+  color: var(--color-secondary);
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+p {
+  font-size: var(--text-base);
 }
 
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
+.body-bg{
   margin: 0;
+  background-image: url('/background-tiles.svg'); 
+  background-color: var(--main-bg);
+  background-size: 40rem;
+  background-position: center;
+  background-repeat: repeat;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.title-xl{
+  font-weight: var(--font-bold);
+  font-size: var(--text-2xl);
+  color: var(--text-default)
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.title-base{
+  font-weight: var(--font-bold);
+  font-size: var(--text-lg);
+  color: var(--text-default);
 }
