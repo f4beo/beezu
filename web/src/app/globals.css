@@ -1,4 +1,75 @@
 :root {
+  /* colors */
+  --neutral-100: #F4F4F2FF;
+  --neutral-200: #E2E1D7FF;
+  --neutral-300: #CAC9B9FF;
+  --neutral-400: #A9A893FF;
+  --neutral-500: #77765EFF;
+  --neutral-600: #53533BFF;
+  --neutral-700: #403F22FF;
+  --neutral-800: #2C2B15FF;
+  --neutral-900: #171706FF;
+
+  --primary-100: #FFFBEDFF;
+  --primary-200: #FFF1C3FF;
+  --primary-300: #FADF85FF;
+  --primary-400: #F9D254FF;
+  --primary-500: #F7C41DFF;
+  --primary-600: #C29607FF;
+  --primary-700: #876804FF;
+  --primary-800: #574303FF;
+  --primary-900: #281F01FF;
+
+  --secondary-100: #FBF0E7FF;
+  --secondary-200: #F3D3B6FF;
+  --secondary-300: #EAB686FF;
+  --secondary-400: #E29856FF;
+  --secondary-500: #DA7B25FF;
+  --secondary-600: #A9601DFF;
+  --secondary-700: #794415FF;
+  --secondary-800: #49290CFF;
+  --secondary-900: #180E04FF;
+  
+  --accent-good-100: #EAFFE0FF;
+  --accent-good-200: #C9F8B4FF;
+  --accent-good-300: #9DEA7AFF;
+  --accent-good-400: #6FE439FF;
+  --accent-good-500: #59D221FF;
+  --accent-good-600: #3AA309FF;
+  --accent-good-700: #2B7D05FF;
+  --accent-good-800: #1F5903FF;
+  --accent-good-900: #0F3000FF;
+  
+  --accent-warning-100: #FFF5E6FF;
+  --accent-warning-200: #FFE5C2FF;
+  --accent-warning-300: #FAC67DFF;
+  --accent-warning-400: #FFB247FF;
+  --accent-warning-500: #ED9111FF;
+  --accent-warning-600: #BC7005FF;
+  --accent-warning-700: #975A06FF;
+  --accent-warning-800: #683F05FF;
+  --accent-warning-900: #382100FF;
+  
+  --accent-bad-100: #FFE5E2FF;
+  --accent-bad-200: #FDC1B7FF;
+  --accent-bad-300: #FA9484FF;
+  --accent-bad-400: #F46D58FF;
+  --accent-bad-500: #ED381CFF;
+  --accent-bad-600: #BF1F06FF;
+  --accent-bad-700: #9F200CFF;
+  --accent-bad-800: #701406FF;
+  --accent-bad-900: #420A02FF;
+
+  --accent-info-100: #E1EDFAFF;
+  --accent-info-200: #B3D2F5FF;
+  --accent-info-300: #7DB4F2FF;
+  --accent-info-400: #4E97EAFF;
+  --accent-info-500: #287EE0FF;
+  --accent-info-600: #0E54A4FF;
+  --accent-info-700: #073D7CFF;
+  --accent-info-800: #042952FF;
+  --accent-info-900: #011831FF;
+
   /* font sizes */
   --text-xs: 0.75rem; /* 12px - Legendas/Labels */
   --text-sm: 0.875rem; /* 14px - Texto secundário */
@@ -14,99 +85,62 @@
   --font-bold: 700;
 
   /* line height */ 
-  /* --leading-tight: 1.2; */
-  /* --leading-base: 1.5; */
+  --leading-tight: 1.2;
+  --leading-base: 1.5;
 
   /* color semantic variables */ 
-  --primary-default: var(--primary-500);
-  --main-bg: var(--primary-200);
-  --main-bg-contrast: var(--primary-300);
+  /* 1. BRAND COLORS */
+  --brand-primary: var(--primary-500);
+  --brand-primary-hover: var(--primary-600);
+  --brand-secondary: var(--secondary-800);
+  --brand-secondary-hover: var(--secondary-700);
 
-  --bg-dark: var(--secondary-800);
-  --bg-soft-dark: var(--secondary-700);
+  /* 2. BACKGROUNDS */
+  --bg-main: var(--primary-200);         
+  --bg-surface: var(--neutral-100);       
+  --bg-surface-contrast: var(--primary-300); 
+  --bg-inverse: var(--neutral-900);       
 
-  --text-default: var(--secondary-900);
-  --text-light: var(--neutral-500);
-  --fill: var(--primary-100);
-  --fill-outline: var(--neutral-200);
-}
+  /* 3. TYPOGRAPHY */
+  --text-main: var(--primary-900);
+  --text-muted: var(--neutral-500);
+  --text-on-brand: var(--primary-900);
+  --text-inverse: var(--neutral-100);
 
-:root {
-  /* colors */
-  --neutral-100: #F4F4F2FF;
-  --neutral-200: #E2E1D7FF;
-  --neutral-300: #CAC9B9FF;
-  --neutral-400: #A9A893FF;
-  --neutral-500: #77765EFF;
-  --neutral-600: #53533BFF;
-  --neutral-700: #403F22FF;
-  --neutral-800: #2C2B15FF;
-  --neutral-900: #171706FF;
-  --primary-100: #FFFBEDFF;
-  --primary-200: #FFF1C3FF;
-  --primary-300: #FADF85FF;
-  --primary-400: #F9D254FF;
-  --primary-500: #F7C41DFF;
-  --primary-600: #C29607FF;
-  --primary-700: #876804FF;
-  --primary-800: #574303FF;
-  --primary-900: #281F01FF;
-  --secondary-100: #FBF0E7FF;
-  --secondary-200: #F3D3B6FF;
-  --secondary-300: #EAB686FF;
-  --secondary-400: #E29856FF;
-  --secondary-500: #DA7B25FF;
-  --secondary-600: #A9601DFF;
-  --secondary-700: #794415FF;
-  --secondary-800: #49290CFF;
-  --secondary-900: #180E04FF;
-  --accent-good-100: #EAFFE0FF;
-  --accent-good-200: #C9F8B4FF;
-  --accent-good-300: #9DEA7AFF;
-  --accent-good-400: #6FE439FF;
-  --accent-good-500: #59D221FF;
-  --accent-good-600: #3AA309FF;
-  --accent-good-700: #2B7D05FF;
-  --accent-good-800: #1F5903FF;
-  --accent-good-900: #0F3000FF;
-  --accent-warning-100: #FFF5E6FF;
-  --accent-warning-200: #FFE5C2FF;
-  --accent-warning-300: #FAC67DFF;
-  --accent-warning-400: #FFB247FF;
-  --accent-warning-500: #ED9111FF;
-  --accent-warning-600: #BC7005FF;
-  --accent-warning-700: #975A06FF;
-  --accent-warning-800: #683F05FF;
-  --accent-warning-900: #382100FF;
-  --accent-bad-100: #FFE5E2FF;
-  --accent-bad-200: #FDC1B7FF;
-  --accent-bad-300: #FA9484FF;
-  --accent-bad-400: #F46D58FF;
-  --accent-bad-500: #ED381CFF;
-  --accent-bad-600: #BF1F06FF;
-  --accent-bad-700: #9F200CFF;
-  --accent-bad-800: #701406FF;
-  --accent-bad-900: #420A02FF;
-  --accent-info-100: #E1EDFAFF;
-  --accent-info-200: #B3D2F5FF;
-  --accent-info-300: #7DB4F2FF;
-  --accent-info-400: #4E97EAFF;
-  --accent-info-500: #287EE0FF;
-  --accent-info-600: #0E54A4FF;
-  --accent-info-700: #073D7CFF;
-  --accent-info-800: #042952FF;
-  --accent-info-900: #011831FF;
+  /* 4. BORDERS & FILLS */
+  --border-default: var(--neutral-300);
+  --border-muted: var(--neutral-200);
+
+  /* 5. FEEDBACKS */
+  --success-default: var(--accent-good-500);
+  --success-bg: var(--accent-good-100);
   
+  --warning-default: var(--accent-warning-500);
+  --warning-bg: var(--accent-warning-100);
+  
+  --danger-default: var(--accent-bad-500);
+  --danger-bg: var(--accent-bad-100);
+  
+  --info-default: var(--accent-info-500);
+  --info-bg: var(--accent-info-100);
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
 
 h1, h2, h3, h4, p {
   margin: 0; 
   font-family: var(--font-roboto-mono);
-  color: var(--color-secondary);
+  line-height: var(--leading-tight);
+  color: var(--brand-secondary);
 }
 
 p {
   font-size: var(--text-base);
+  line-height: var(--leading-base);
 }
 
 .body-bg{
@@ -116,16 +150,4 @@ p {
   background-size: 40rem;
   background-position: center;
   background-repeat: repeat;
-}
-
-.title-xl{
-  font-weight: var(--font-bold);
-  font-size: var(--text-2xl);
-  color: var(--text-default)
-}
-
-.title-base{
-  font-weight: var(--font-bold);
-  font-size: var(--text-lg);
-  color: var(--text-default);
 }
