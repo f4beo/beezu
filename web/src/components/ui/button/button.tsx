@@ -12,7 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSize;
 }
 
-export function Button({ 
+export default function Button({ 
     outlined = false,
     fullWidth = false,
     size = "medium",
