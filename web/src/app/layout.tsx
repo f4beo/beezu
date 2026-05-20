@@ -22,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${robotoMono.variable}`}>
-      <body className='body-bg'>{children}</body>
+      <body>
+        <div className='body-bg'></div>
+        {children}
+      </body>
     </html>
   );
 }

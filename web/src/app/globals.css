@@ -88,6 +88,9 @@
   --leading-tight: 1.2;
   --leading-base: 1.5;
 
+  /* sidebar width */
+  --sidebar-width: 350px;
+
   /* color semantic variables */ 
   /* 1. BRAND COLORS */
   --brand-primary: var(--primary-500);
@@ -143,11 +146,19 @@ p {
   line-height: var(--leading-base);
 }
 
-.body-bg{
+body{
   margin: 0;
-  background-image: url('/background-tiles.svg'); 
   background-color: var(--main-bg);
+}
+
+.body-bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url('/background-tiles.svg'); 
   background-size: 40rem;
-  background-position: center;
   background-repeat: repeat;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1
 }
