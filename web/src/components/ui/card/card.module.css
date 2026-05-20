@@ -1,0 +1,47 @@
+.card {
+  background: var(--bg-surface);
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  overflow: hidden;
+  height: max-content;
+}
+
+/* Header */
+.header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-default);
+  background: linear-gradient(71deg,var(--primary-300) 0%, var(--primary-500) 100%);
+}
+
+.headerNoBackground {
+  background-color: var(--bg-surface);
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Content */
+.content {
+  padding: 1.5rem;
+}
+
+.contentNoPadding {
+  padding: 0;
+}
+
+/* Divisória entre seções */
+.divider {
+  height: 1px;
+  background-color: var(--border-default);
+  margin: 1rem 0;
+}
+
+/* Footer */
+.footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-default);
+}
