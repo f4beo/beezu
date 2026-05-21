@@ -117,6 +117,10 @@ public class User implements Serializable {
 		disciplines.remove(discipline);
 	}
 	
+	public void addHoney(Integer amount) {
+		this.honey+= amount;
+	}
+	
 
 	
 	
