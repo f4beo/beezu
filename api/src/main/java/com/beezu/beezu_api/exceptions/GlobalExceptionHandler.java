@@ -14,8 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler({ UserNotFoundException.class, DisciplineNotFoundException.class,
-			ActivityNotExistsException.class, EnrollmentNotExistsException.class, 
-			ActivityNotFoundException.class, UserActivityNotFoundException.class})
+			ActivityNotExistsException.class, EnrollmentDoesNotExistException.class, ActivityNotFoundException.class})
 	public ResponseEntity<StandardError> notFound(RuntimeException ex, HttpServletRequest request) {
 		return buildError(HttpStatus.NOT_FOUND, "Resource not found", ex, request);
 	}

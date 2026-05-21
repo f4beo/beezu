@@ -8,7 +8,7 @@ import java.util.Objects;
 
 import com.beezu.beezu_api.exceptions.ActivityNotExistsException;
 import com.beezu.beezu_api.exceptions.EnrollmentAlreadyExistsException;
-import com.beezu.beezu_api.exceptions.EnrollmentNotExistsException;
+import com.beezu.beezu_api.exceptions.EnrollmentDoesNotExistException;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -89,7 +89,7 @@ public class Discipline implements Serializable {
 			throw new IllegalArgumentException("The enrollment cannot be null");
 		}
 		if(!enrollments.contains(enrollment)) {
-			throw new EnrollmentNotExistsException("The enrollment does not exists");
+			throw new EnrollmentDoesNotExistException("The enrollment does not exists");
 		}
 		enrollments.remove(enrollment);
 		enrollment.setDiscipline(null);
