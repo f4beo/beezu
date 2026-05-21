@@ -19,7 +19,8 @@ public class GlobalExceptionHandler {
 		return buildError(HttpStatus.NOT_FOUND, "Resource not found", ex, request);
 	}
 
-	@ExceptionHandler({ EmailAlreadyRegisteredException.class, EnrollmentAlreadyExistsException.class, UserAlreadyEnrolledException.class})
+	@ExceptionHandler({ EmailAlreadyRegisteredException.class, 
+		EnrollmentAlreadyExistsException.class, UserAlreadyEnrolledException.class, ActivityIsAlreadyCompletedException.class})
 	public ResponseEntity<StandardError> conflict(RuntimeException ex, HttpServletRequest request) {
 		return buildError(HttpStatus.CONFLICT, "Business rule violation", ex, request);
 	}
