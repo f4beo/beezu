@@ -3,8 +3,10 @@ package com.beezu.beezu_api.models;
 import java.io.Serializable;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import com.beezu.beezu_api.exceptions.ActivityNotExistsException;
 import com.beezu.beezu_api.exceptions.EnrollmentAlreadyExistsException;
@@ -39,7 +41,7 @@ public class Discipline implements Serializable {
 	@OneToMany(mappedBy = "discipline", cascade = CascadeType.ALL,  orphanRemoval = true)
 	private List<Activity> activities = new ArrayList<>();
 	@OneToMany(mappedBy = "discipline", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<UserDiscipline> enrollments = new ArrayList<>();
+	private Set<UserDiscipline> enrollments = new HashSet<>();
 	@OneToOne(mappedBy = "discipline", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Hive hive;
 
@@ -134,7 +136,7 @@ public class Discipline implements Serializable {
 		return activities;
 	}
 
-	public List<UserDiscipline> getEnrollments() {
+	public Set<UserDiscipline> getEnrollments() {
 		return enrollments;
 	}
 	
