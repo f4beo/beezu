@@ -3,12 +3,18 @@ package com.beezu.beezu_api.models;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.beezu.beezu_api.exceptions.UserAlreadyEnrolledException;
 import com.beezu.beezu_api.exceptions.UserNotEnrolledDisciplineException;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +25,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="tb_user")
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +43,7 @@ public class User implements Serializable {
 	private Integer honey;
 	
 	@OneToMany(mappedBy = "user")
-	private List<UserDiscipline> disciplines = new ArrayList<>();
+	private Set<UserDiscipline> disciplines = new HashSet<>();
 	@OneToMany(mappedBy = "user")
 	private List<UserActivity> activities = new ArrayList<>();
 
@@ -87,7 +93,7 @@ public class User implements Serializable {
 	}
 	
 	
-	public List<UserDiscipline> getDisciplines() {
+	public Set<UserDiscipline> getDisciplines() {
 		return disciplines;
 	}
 
@@ -119,6 +125,40 @@ public class User implements Serializable {
 	
 	public void addHoney(Integer amount) {
 		this.honey+= amount;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return List.of();
+	}
+
+	@Override
+	public String getPassword() {
+		return password;
+	}
+
+	@Override
+	public String getUsername() {
+		return email;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+	    return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+	    return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+	    return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+	    return true;
 	}
 	
 

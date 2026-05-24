@@ -4,6 +4,7 @@ import java.time.Instant;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -14,33 +15,41 @@ import jakarta.servlet.http.HttpServletRequest;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler({ UserNotFoundException.class, DisciplineNotFoundException.class,
-			ActivityNotExistsException.class, EnrollmentDoesNotExistException.class, ActivityNotFoundException.class})
+			ActivityNotExistsException.class, EnrollmentDoesNotExistException.class, ActivityNotFoundException.class })
 	public ResponseEntity<StandardError> notFound(RuntimeException ex, HttpServletRequest request) {
 		return buildError(HttpStatus.NOT_FOUND, "Resource not found", ex, request);
 	}
 
-	@ExceptionHandler({ EmailAlreadyRegisteredException.class, 
-		EnrollmentAlreadyExistsException.class, UserAlreadyEnrolledException.class, ActivityIsAlreadyCompletedException.class})
+	@ExceptionHandler({ EmailAlreadyRegisteredException.class, EnrollmentAlreadyExistsException.class,
+			UserAlreadyEnrolledException.class, ActivityIsAlreadyCompletedException.class })
 	public ResponseEntity<StandardError> conflict(RuntimeException ex, HttpServletRequest request) {
 		return buildError(HttpStatus.CONFLICT, "Business rule violation", ex, request);
 	}
-	
-	@ExceptionHandler({ InvalidActivityDeadlineException.class})
+
+	@ExceptionHandler({ InvalidActivityDeadlineException.class })
 	public ResponseEntity<StandardError> badRequest(RuntimeException ex, HttpServletRequest request) {
 		return buildError(HttpStatus.BAD_REQUEST, "Invalid request", ex, request);
 	}
-	
+
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<StandardError> generic(Exception ex, HttpServletRequest request) {
 		return buildError(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected error", ex, request);
 	}
-	
 
-	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<StandardError> validation(MethodArgumentNotValidException ex, HttpServletRequest request) {
-	    String message = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
-	    return buildError(HttpStatus.BAD_REQUEST, "Validation error", new Exception(message), request);
+		String message = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
+		return buildError(HttpStatus.BAD_REQUEST, "Validation error", new Exception(message), request);
+	}
+
+	@ExceptionHandler(ForbiddenActionException.class)
+	public ResponseEntity<StandardError> forbidden(ForbiddenActionException ex, HttpServletRequest request) {
+		return buildError(HttpStatus.FORBIDDEN, "Access denied", ex, request);
+	}
+
+	@ExceptionHandler(AuthenticationException.class)
+	public ResponseEntity<StandardError> unauthorized(AuthenticationException ex, HttpServletRequest request) {
+		return buildError(HttpStatus.UNAUTHORIZED, "Authentication failed", ex, request);
 	}
 
 	private ResponseEntity<StandardError> buildError(HttpStatus status, String error, Exception ex,
