@@ -16,56 +16,48 @@ import com.beezu.beezu_api.services.UserActivityService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name="UserActivity",description="Endpoints for managing user activities")
+@Tag(name = "UserActivity", description = "Endpoints for managing user activities")
 @RestController
-@RequestMapping("/useractivities")
+@RequestMapping("/users/activities")
 public class UserActivityController {
-	
+
 	private final UserActivityService userActivityService;
-	
+
 	public UserActivityController(UserActivityService userActivityService) {
 		this.userActivityService = userActivityService;
 	}
-	
-	@Operation(summary="Complete a activity")
-	@PatchMapping("/users/{userId}/activities/{activityId}/complete")
-	public ResponseEntity<Void> completeActivity(@PathVariable Long userId, @PathVariable Long activityId){
-		userActivityService.completeActivity(activityId, userId);
-		return ResponseEntity.noContent().build();
-	}
-	
-	@Operation(summary="Update a activity status")
-	@PatchMapping("/{userId}/{activityId}/{status}/status")
-	public ResponseEntity<UserActivityResponseDTO> updateActivityStatus(@PathVariable Long userId, @PathVariable Long activityId, @PathVariable ActivityStatus status){
-		UserActivityResponseDTO updatedActivity = userActivityService.updateActivityStatus(activityId, userId, status);
+
+
+	@Operation(summary = "Update a activity status")
+	@PatchMapping("/my/activities/{activityId}/status/{status}")
+	public ResponseEntity<UserActivityResponseDTO> updateActivityStatus(
+			@PathVariable Long activityId, @PathVariable ActivityStatus status) {
+		UserActivityResponseDTO updatedActivity = userActivityService.updateActivityStatus(activityId, status);
 		return ResponseEntity.ok(updatedActivity);
 	}
-	
-	@Operation(summary="List all user activities")
-	@GetMapping("/users/{userId}/activities")
-	public ResponseEntity<List<UserActivityResponseDTO>> listUserActivities(@PathVariable Long userId){
-		return ResponseEntity.ok(userActivityService.listUserActivities(userId));
+
+	@Operation(summary = "List all user activities")
+	@GetMapping("/my/activities")
+	public ResponseEntity<List<UserActivityResponseDTO>> listUserActivities() {
+		return ResponseEntity.ok(userActivityService.listUserActivities());
 	}
-	
-	@Operation(summary="List all completed user activities")
-	@GetMapping("/users/{userId}/activities/completed")
-	public ResponseEntity<List<UserActivityResponseDTO>> listCompletedActivities(@PathVariable Long userId){
-		return ResponseEntity.ok(userActivityService.listCompletedActivities(userId));
+
+	@Operation(summary = "List all completed user activities")
+	@GetMapping("/my/activities/completed")
+	public ResponseEntity<List<UserActivityResponseDTO>> listCompletedActivities() {
+		return ResponseEntity.ok(userActivityService.listCompletedActivities());
 	}
-	
-	@Operation(summary="List all pending user activities")
-	@GetMapping("/users/{userId}/activities/pending")
-	public ResponseEntity<List<UserActivityResponseDTO>> listPendingActivities(@PathVariable Long userId){
-		return ResponseEntity.ok(userActivityService.listPendingActivities(userId));
+
+	@Operation(summary = "List all pending user activities")
+	@GetMapping("/my/activities/pending")
+	public ResponseEntity<List<UserActivityResponseDTO>> listPendingActivities(){
+		return ResponseEntity.ok(userActivityService.listPendingActivities());
 	}
-	
-	@Operation(summary="List all overdue user activities")
-	@GetMapping("/users/{userId}/activities/overdue")
-	public ResponseEntity<List<UserActivityResponseDTO>> listOverdueActivities(@PathVariable Long userId){
-		return ResponseEntity.ok(userActivityService.listOverdueActivities(userId));
+
+	@Operation(summary = "List all overdue user activities")
+	@GetMapping("/my/activities/overdue")
+	public ResponseEntity<List<UserActivityResponseDTO>> listOverdueActivities() {
+		return ResponseEntity.ok(userActivityService.listOverdueActivities());
 	}
-	
-	
-	
 
 }

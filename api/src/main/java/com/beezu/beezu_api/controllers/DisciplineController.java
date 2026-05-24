@@ -43,12 +43,11 @@ public class DisciplineController {
         return ResponseEntity.ok(disciplineService.findById(id));
     }
 	@Operation(summary="Create a new discipline")
-    @PostMapping("/{creatorId}")
+    @PostMapping
     public ResponseEntity<DisciplineResponseDTO> create(
-        @RequestBody @Valid DisciplineRequestDTO dto, 
-        @PathVariable Long creatorId
+        @RequestBody @Valid DisciplineRequestDTO dto
     ){
-       DisciplineResponseDTO saved = disciplineService.createDiscipline(dto, creatorId);
+       DisciplineResponseDTO saved = disciplineService.createDiscipline(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 	@Operation(summary="Delete a discipline")

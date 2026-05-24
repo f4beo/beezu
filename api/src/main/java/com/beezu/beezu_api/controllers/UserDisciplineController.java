@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name="UserDiscipline",description="Endpoints for managing user disciplines")
 @RestController
-@RequestMapping("/userdisciplines")
+@RequestMapping("/users/disciplines")
 public class UserDisciplineController {
 	
 	private final UserDisciplineService userDisciplineService;
@@ -29,23 +29,23 @@ public class UserDisciplineController {
 	}
 	
 	@Operation(summary="Join discipline by code")
-	@PostMapping("/users/{userId}/join/{disciplineCode}")
-	public ResponseEntity<Void> joinDiscipline(@PathVariable String disciplineCode, @PathVariable Long userId){
-		userDisciplineService.joinDisciplineByCode(disciplineCode, userId);
+	@PostMapping("/join/{disciplineCode}")
+	public ResponseEntity<Void> joinDiscipline(@PathVariable String disciplineCode){
+		userDisciplineService.joinDisciplineByCode(disciplineCode);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	@Operation(summary="Leave discipline by id")
-	@DeleteMapping("/users/{userId}/disciplines/{disciplineId}")
-	public ResponseEntity<Void> leaveDiscipline(@PathVariable Long disciplineId, @PathVariable Long userId){
-		userDisciplineService.leaveDiscipline(disciplineId, userId);
+	@DeleteMapping("/disciplines/{disciplineId}")
+	public ResponseEntity<Void> leaveDiscipline(@PathVariable Long disciplineId){
+		userDisciplineService.leaveDiscipline(disciplineId);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@Operation(summary="List user disciplines")
-	@GetMapping("/users/{userId}")
-	public ResponseEntity<List<UserDisciplineResponseDTO>> listUserDisciplines(@PathVariable Long userId){
-		return ResponseEntity.ok(userDisciplineService.listUserDiscipline(userId));
+	@GetMapping("/my/disciplines")
+	public ResponseEntity<List<UserDisciplineResponseDTO>> listUserDisciplines(){
+		return ResponseEntity.ok(userDisciplineService.listUserDiscipline());
 	}
 	
 	@Operation(summary="List discipline members ")
@@ -55,17 +55,17 @@ public class UserDisciplineController {
 	}
 	
 	@Operation(summary="Promote user to moderator ")
-	@PatchMapping("/{userModeratorId}/{targetUserId}/{disciplineId}/promote")
-	public ResponseEntity<Void> promoteToModerator( @PathVariable Long userModeratorId, @PathVariable Long targetUserId,@PathVariable Long disciplineId){
-		userDisciplineService.promoteToModerator(userModeratorId, targetUserId, disciplineId);
-		return ResponseEntity.noContent().build();
+	@PatchMapping("/{disciplineId}/promote/target/{targetUserId}")
+	public ResponseEntity<Void> promoteToModerator(@PathVariable Long targetUserId,@PathVariable Long disciplineId){
+		userDisciplineService.promoteToModerator(targetUserId, disciplineId);
+		return ResponseEntity.ok().build();
 	}
 	
 	@Operation(summary="Revoke user moderator status ")
-	@PatchMapping("/{userModeratorId}/{targetUserId}/{disciplineId}/revoke")
-	public ResponseEntity<Void> revokeModerator( @PathVariable Long userModeratorId, @PathVariable Long targetUserId,@PathVariable Long disciplineId){
-		userDisciplineService.revokeModerator(userModeratorId, targetUserId, disciplineId);
-		return ResponseEntity.noContent().build();
+	@PatchMapping("/{disciplineId}/revoke/target/{targetUserId}")
+	public ResponseEntity<Void> revokeModerator( @PathVariable Long targetUserId,@PathVariable Long disciplineId){
+		userDisciplineService.revokeModerator( targetUserId, disciplineId);
+		return ResponseEntity.ok().build();
 	}
 	
 	

@@ -31,9 +31,9 @@ public class ActivityController {
 	}
 	
 	@Operation(summary="Create a new activity")
-	@PostMapping("/{creatorId}/{disciplineId}")
-	public ResponseEntity<ActivityResponseDTO> create(@RequestBody @Valid ActivityRequestDTO request, @PathVariable Long creatorId, @PathVariable Long disciplineId){
-		ActivityResponseDTO response = activityService.createActivity(request, creatorId, disciplineId);
+	@PostMapping("/{disciplineId}")
+	public ResponseEntity<ActivityResponseDTO> create(@RequestBody @Valid ActivityRequestDTO request, @PathVariable Long disciplineId){
+		ActivityResponseDTO response = activityService.createActivity(request, disciplineId);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 	
