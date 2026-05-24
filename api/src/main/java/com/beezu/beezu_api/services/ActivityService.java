@@ -9,6 +9,7 @@ import com.beezu.beezu_api.dtos.ActivityResponseDTO;
 import com.beezu.beezu_api.dtos.ActivityUpdateDTO;
 import com.beezu.beezu_api.exceptions.ActivityNotFoundException;
 import com.beezu.beezu_api.exceptions.DisciplineNotFoundException;
+import com.beezu.beezu_api.exceptions.ForbiddenActionException;
 import com.beezu.beezu_api.exceptions.InvalidActivityDeadlineException;
 import com.beezu.beezu_api.exceptions.UserNotFoundException;
 import com.beezu.beezu_api.mappers.ActivityMapper;
@@ -21,6 +22,7 @@ import com.beezu.beezu_api.repositories.ActivityRepository;
 import com.beezu.beezu_api.repositories.DisciplineRepository;
 import com.beezu.beezu_api.repositories.UserActivityRepository;
 import com.beezu.beezu_api.repositories.UserRepository;
+import com.beezu.beezu_api.security.AuthenticatedUserUtil;
 
 @Service
 public class ActivityService {
@@ -38,18 +40,23 @@ public class ActivityService {
 		this.userActivityRepository = userActivityRepository;
 	}
 
-	public ActivityResponseDTO createActivity(ActivityRequestDTO dto, Long creatorId, Long disciplineId) {
+	public ActivityResponseDTO createActivity(ActivityRequestDTO dto, Long disciplineId) {
 		if (dto == null) {
 			throw new IllegalArgumentException("The request cannot be null");
 		}
 		if (dto.deadline() != null && dto.deadline().isBefore(LocalDateTime.now())) {
 			throw new InvalidActivityDeadlineException("The activity deadline cannot be in the past");
 		}
+		 Long authenticatedUserId =
+	                AuthenticatedUserUtil.getAuthenticatedUserId();
 
-		User creator = userRepository.findById(creatorId)
+
+		User creator = userRepository.findById(authenticatedUserId)
 				.orElseThrow(() -> new UserNotFoundException("User not found"));
 		Discipline discipline = disciplineRepository.findById(disciplineId)
 				.orElseThrow(() -> new DisciplineNotFoundException("Discipline not found"));
+		
+		validateModeratorAccess(discipline);
 
 		Activity activity = ActivityMapper.toEntity(dto);
 
@@ -66,6 +73,7 @@ public class ActivityService {
 
 	public ActivityResponseDTO findById(Long id) {
 		Activity activity = findEntityById(id);
+        validateUserAccess(activity.getDiscipline());
 		return ActivityMapper.toResponse(activity);
 	}
 
@@ -77,6 +85,7 @@ public class ActivityService {
 			throw new InvalidActivityDeadlineException("The activity deadline cannot be in the past");
 		}
 		Activity activity = findEntityById(id);
+        validateModeratorAccess(activity.getDiscipline());
 		updateData(activity, dto);
 		activityRepository.save(activity);
 
@@ -85,6 +94,7 @@ public class ActivityService {
 
 	public void deleteActivity(Long id) {
 		Activity activity = findEntityById(id);
+        validateModeratorAccess(activity.getDiscipline());
 		activity.getDiscipline().removeActivity(activity);
 
 		activityRepository.delete(activity);
@@ -117,6 +127,30 @@ public class ActivityService {
 			UserActivity userActivity = new UserActivity(enrollment.getUser(), activity);
 
 			userActivityRepository.save(userActivity);
+		}
+	}
+
+	private void validateModeratorAccess(Discipline discipline) {
+
+		Long authenticatedUserId = AuthenticatedUserUtil.getAuthenticatedUserId();
+
+		boolean isModerator = discipline.getEnrollments().stream().anyMatch(
+				enrollment -> enrollment.getUser().getId().equals(authenticatedUserId) && enrollment.isModerator());
+
+		if (!isModerator) {
+			throw new ForbiddenActionException("Only moderators can perform this action");
+		}
+	}
+
+	private void validateUserAccess(Discipline discipline) {
+
+		Long authenticatedUserId = AuthenticatedUserUtil.getAuthenticatedUserId();
+
+		boolean isEnrolled = discipline.getEnrollments().stream()
+				.anyMatch(enrollment -> enrollment.getUser().getId().equals(authenticatedUserId));
+
+		if (!isEnrolled) {
+			throw new ForbiddenActionException("You do not have access to this discipline");
 		}
 	}
 }
