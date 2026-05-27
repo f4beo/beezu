@@ -29,7 +29,9 @@
   --secondary-700: #794415FF;
   --secondary-800: #49290CFF;
   --secondary-900: #180E04FF;
-  
+
+  --transparent: rgba(121, 68, 21, 0.514);
+
   --accent-good-100: #EAFFE0FF;
   --accent-good-200: #C9F8B4FF;
   --accent-good-300: #9DEA7AFF;
