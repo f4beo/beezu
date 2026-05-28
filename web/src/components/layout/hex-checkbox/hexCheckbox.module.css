@@ -1,0 +1,33 @@
+.label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+}
+
+.inputHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.hexagonContainer {
+  position: relative;
+  flex-shrink: 0;
+  transition: transform 0.05s;
+}
+
+.hexagonContainer:active {
+  transform: scale(0.97);
+}
+
+.image {
+  transition: all 0.3s ease;
+}

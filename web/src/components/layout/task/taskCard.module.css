@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  padding-left: 1.5rem;
+}
+
+.taskTitle {
+  font-size: var(--text-xl);
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bottomInfo {
+  display: flex;
+  gap: 1rem;
+}
+
+.bottomItem {
+  font-family: var(--font-roboto-mono);
+  font-size: var(--text-base);
+  color: var(--neutral-500)
+}
