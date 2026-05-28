@@ -8,7 +8,7 @@
   gap: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: var(--text-main); 
+  color: var(--text-main);
   height: 100%;
 }
 
