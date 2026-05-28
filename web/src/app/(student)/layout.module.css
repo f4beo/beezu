@@ -1,7 +1,7 @@
-.container{
+.container {
   display: flex;
 }
-.main{
+.main {
   width: 100%;
   max-width: 1200px;
   margin: auto;

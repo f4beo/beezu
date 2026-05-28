@@ -1,76 +1,76 @@
 :root {
   /* colors */
-  --neutral-100: #F4F4F2FF;
-  --neutral-200: #E2E1D7FF;
-  --neutral-300: #CAC9B9FF;
-  --neutral-400: #A9A893FF;
-  --neutral-500: #77765EFF;
-  --neutral-600: #53533BFF;
-  --neutral-700: #403F22FF;
-  --neutral-800: #2C2B15FF;
-  --neutral-900: #171706FF;
+  --neutral-100: #f4f4f2ff;
+  --neutral-200: #e2e1d7ff;
+  --neutral-300: #cac9b9ff;
+  --neutral-400: #a9a893ff;
+  --neutral-500: #77765eff;
+  --neutral-600: #53533bff;
+  --neutral-700: #403f22ff;
+  --neutral-800: #2c2b15ff;
+  --neutral-900: #171706ff;
 
-  --primary-100: #FFFBEDFF;
-  --primary-200: #FFF1C3FF;
-  --primary-300: #FADF85FF;
-  --primary-400: #F9D254FF;
-  --primary-500: #F7C41DFF;
-  --primary-600: #C29607FF;
-  --primary-700: #876804FF;
-  --primary-800: #574303FF;
-  --primary-900: #281F01FF;
+  --primary-100: #fffbedff;
+  --primary-200: #fff1c3ff;
+  --primary-300: #fadf85ff;
+  --primary-400: #f9d254ff;
+  --primary-500: #f7c41dff;
+  --primary-600: #c29607ff;
+  --primary-700: #876804ff;
+  --primary-800: #574303ff;
+  --primary-900: #281f01ff;
 
-  --secondary-100: #FBF0E7FF;
-  --secondary-200: #F3D3B6FF;
-  --secondary-300: #EAB686FF;
-  --secondary-400: #E29856FF;
-  --secondary-500: #DA7B25FF;
-  --secondary-600: #A9601DFF;
-  --secondary-700: #794415FF;
-  --secondary-800: #49290CFF;
-  --secondary-900: #180E04FF;
+  --secondary-100: #fbf0e7ff;
+  --secondary-200: #f3d3b6ff;
+  --secondary-300: #eab686ff;
+  --secondary-400: #e29856ff;
+  --secondary-500: #da7b25ff;
+  --secondary-600: #a9601dff;
+  --secondary-700: #794415ff;
+  --secondary-800: #49290cff;
+  --secondary-900: #180e04ff;
 
   --transparent: rgba(121, 68, 21, 0.514);
 
-  --accent-good-100: #EAFFE0FF;
-  --accent-good-200: #C9F8B4FF;
-  --accent-good-300: #9DEA7AFF;
-  --accent-good-400: #6FE439FF;
-  --accent-good-500: #59D221FF;
-  --accent-good-600: #3AA309FF;
-  --accent-good-700: #2B7D05FF;
-  --accent-good-800: #1F5903FF;
-  --accent-good-900: #0F3000FF;
-  
-  --accent-warning-100: #FFF5E6FF;
-  --accent-warning-200: #FFE5C2FF;
-  --accent-warning-300: #FAC67DFF;
-  --accent-warning-400: #FFB247FF;
-  --accent-warning-500: #ED9111FF;
-  --accent-warning-600: #BC7005FF;
-  --accent-warning-700: #975A06FF;
-  --accent-warning-800: #683F05FF;
-  --accent-warning-900: #382100FF;
-  
-  --accent-bad-100: #FFE5E2FF;
-  --accent-bad-200: #FDC1B7FF;
-  --accent-bad-300: #FA9484FF;
-  --accent-bad-400: #F46D58FF;
-  --accent-bad-500: #ED381CFF;
-  --accent-bad-600: #BF1F06FF;
-  --accent-bad-700: #9F200CFF;
-  --accent-bad-800: #701406FF;
-  --accent-bad-900: #420A02FF;
+  --accent-good-100: #eaffe0ff;
+  --accent-good-200: #c9f8b4ff;
+  --accent-good-300: #9dea7aff;
+  --accent-good-400: #6fe439ff;
+  --accent-good-500: #59d221ff;
+  --accent-good-600: #3aa309ff;
+  --accent-good-700: #2b7d05ff;
+  --accent-good-800: #1f5903ff;
+  --accent-good-900: #0f3000ff;
 
-  --accent-info-100: #E1EDFAFF;
-  --accent-info-200: #B3D2F5FF;
-  --accent-info-300: #7DB4F2FF;
-  --accent-info-400: #4E97EAFF;
-  --accent-info-500: #287EE0FF;
-  --accent-info-600: #0E54A4FF;
-  --accent-info-700: #073D7CFF;
-  --accent-info-800: #042952FF;
-  --accent-info-900: #011831FF;
+  --accent-warning-100: #fff5e6ff;
+  --accent-warning-200: #ffe5c2ff;
+  --accent-warning-300: #fac67dff;
+  --accent-warning-400: #ffb247ff;
+  --accent-warning-500: #ed9111ff;
+  --accent-warning-600: #bc7005ff;
+  --accent-warning-700: #975a06ff;
+  --accent-warning-800: #683f05ff;
+  --accent-warning-900: #382100ff;
+
+  --accent-bad-100: #ffe5e2ff;
+  --accent-bad-200: #fdc1b7ff;
+  --accent-bad-300: #fa9484ff;
+  --accent-bad-400: #f46d58ff;
+  --accent-bad-500: #ed381cff;
+  --accent-bad-600: #bf1f06ff;
+  --accent-bad-700: #9f200cff;
+  --accent-bad-800: #701406ff;
+  --accent-bad-900: #420a02ff;
+
+  --accent-info-100: #e1edfaff;
+  --accent-info-200: #b3d2f5ff;
+  --accent-info-300: #7db4f2ff;
+  --accent-info-400: #4e97eaff;
+  --accent-info-500: #287ee0ff;
+  --accent-info-600: #0e54a4ff;
+  --accent-info-700: #073d7cff;
+  --accent-info-800: #042952ff;
+  --accent-info-900: #011831ff;
 
   /* font sizes */
   --text-xs: 0.75rem; /* 12px - Legendas/Labels */
@@ -86,14 +86,14 @@
   --font-medium: 500;
   --font-bold: 700;
 
-  /* line height */ 
+  /* line height */
   --leading-tight: 1.2;
   --leading-base: 1.5;
 
   /* sidebar width */
   --sidebar-width: 350px;
 
-  /* color semantic variables */ 
+  /* color semantic variables */
   /* 1. BRAND COLORS */
   --brand-primary: var(--primary-500);
   --brand-primary-hover: var(--primary-600);
@@ -101,10 +101,10 @@
   --brand-secondary-hover: var(--secondary-700);
 
   /* 2. BACKGROUNDS */
-  --bg-main: var(--primary-200);         
-  --bg-surface: var(--neutral-100);       
-  --bg-surface-contrast: var(--primary-300); 
-  --bg-inverse: var(--neutral-900);       
+  --bg-main: var(--primary-200);
+  --bg-surface: var(--neutral-100);
+  --bg-surface-contrast: var(--primary-300);
+  --bg-inverse: var(--neutral-900);
 
   /* 3. TYPOGRAPHY */
   --text-main: var(--primary-900);
@@ -119,13 +119,13 @@
   /* 5. FEEDBACKS */
   --success-default: var(--accent-good-500);
   --success-bg: var(--accent-good-100);
-  
+
   --warning-default: var(--accent-warning-500);
   --warning-bg: var(--accent-warning-100);
-  
+
   --danger-default: var(--accent-bad-500);
   --danger-bg: var(--accent-bad-100);
-  
+
   --info-default: var(--accent-info-500);
   --info-bg: var(--accent-info-100);
 }
@@ -134,10 +134,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-} 
+}
 
-h1, h2, h3, h4, p {
-  margin: 0; 
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
   font-family: var(--font-roboto-mono);
   line-height: var(--leading-tight);
   color: var(--brand-secondary);
@@ -148,19 +152,19 @@ p {
   line-height: var(--leading-base);
 }
 
-body{
+body {
   margin: 0;
   background-color: var(--main-bg);
 }
 
-.body-bg{
+.body-bg {
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url('/background-tiles.svg'); 
+  background-image: url('/background-tiles.svg');
   background-size: 40rem;
   background-repeat: repeat;
   width: 100vw;
   height: 100vh;
-  z-index: -1
+  z-index: -1;
 }

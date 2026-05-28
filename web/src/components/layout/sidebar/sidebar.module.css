@@ -1,4 +1,4 @@
-.sidebarContainer{
+.sidebarContainer {
   position: fixed;
   top: 0;
   display: flex;
@@ -10,25 +10,27 @@
   border-radius: 0 2rem 2rem 0;
 }
 
-.topSection{
+.topSection {
   position: relative;
   width: 100%;
 }
 
-.beeSection{
-  height: 150px;       /* mudar para a seção da abelha rainha que ta no figma */
+.beeSection {
+  height: 150px; /* mudar para a seção da abelha rainha que ta no figma */
   border-radius: 9999;
   background-color: var(--brand-primary-hover);
-  margin-top: 1rem; 
+  margin-top: 1rem;
 }
 
-.sidebarItems, .bottomItems{
+.sidebarItems,
+.bottomItems {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.sidebarItem, .sidebarItemActive{
+.sidebarItem,
+.sidebarItemActive {
   display: flex;
   gap: 0.5rem;
   font-family: var(--font-roboto-mono);
@@ -39,28 +41,28 @@
   font-weight: var(--font-bold);
 }
 
-.sidebarItemActive{
+.sidebarItemActive {
   background-color: var(--brand-secondary);
   color: var(--brand-primary);
-  &&:hover{
+  &&:hover {
     background-color: var(--brand-secondary-hover);
   }
-  &&:active{
+  &&:active {
     background-color: var(--secondary-900);
   }
 }
 
-.sidebarItem{
+.sidebarItem {
   color: var(--brand-secondary);
-  &&:hover{
-    background-color: var(--brand-primary-hover)
+  &&:hover {
+    background-color: var(--brand-primary-hover);
   }
 }
 
-.bottomItems{
+.bottomItems {
   margin-top: auto;
 }
 
 .divider {
-    border: 1px solid var(--brand-secondary);
+  border: 1px solid var(--brand-secondary);
 }

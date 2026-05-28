@@ -4,7 +4,7 @@ import './globals.css';
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '600', '700'],
-  variable: '--font-poppins', 
+  variable: '--font-poppins',
   display: 'swap',
 });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${robotoMono.variable}`}>
       <body>
-        <div className='body-bg'></div>
+        <div className="body-bg"></div>
         {children}
       </body>
     </html>
