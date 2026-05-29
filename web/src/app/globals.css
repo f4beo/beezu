@@ -73,13 +73,20 @@
   --accent-info-900: #011831ff;
 
   /* font sizes */
-  --text-xs: 0.75rem; /* 12px - Legendas/Labels */
-  --text-sm: 0.875rem; /* 14px - Texto secundário */
-  --text-base: 1rem; /* 16px - Texto principal (padrão) */
-  --text-lg: 1.25rem; /* 20px - Subtítulos */
-  --text-xl: 1.5rem; /* 24px - Títulos menores */
-  --text-2xl: 2rem; /* 32px - Títulos de seção */
-  --text-3xl: 3rem; /* 48px - Hero / Dashboard */
+  --text-xs: 0.75rem;
+  /* 12px - Legendas/Labels */
+  --text-sm: 0.875rem;
+  /* 14px - Texto secundário */
+  --text-base: 1rem;
+  /* 16px - Texto principal (padrão) */
+  --text-lg: 1.25rem;
+  /* 20px - Subtítulos */
+  --text-xl: 1.5rem;
+  /* 24px - Títulos menores */
+  --text-2xl: 2rem;
+  /* 32px - Títulos de seção */
+  --text-3xl: 3rem;
+  /* 48px - Hero / Dashboard */
 
   /* weights */
   --font-regular: 400;
@@ -145,6 +152,12 @@ p {
   font-family: var(--font-roboto-mono);
   line-height: var(--leading-tight);
   color: var(--brand-secondary);
+}
+
+ol,
+ul,
+li {
+  list-style: none;
 }
 
 p {
