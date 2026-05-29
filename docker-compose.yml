@@ -1,0 +1,47 @@
+services:
+
+  database:
+    image: postgres:16
+
+    container_name: beezu-database
+
+    environment:
+      POSTGRES_DB: beezu
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./api
+
+    container_name: beezu-api
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      JWT_SECRET: my-super-secret-key
+
+    depends_on:
+      - database
+
+  web:
+    build:
+      context: ./web
+
+    container_name: beezu-web
+
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
