@@ -1,0 +1,11 @@
+.container {
+  padding: 2rem;
+}
+
+.title {
+  font-size: var(--text-3xl);
+}
+
+.taskListWrapper {
+  margin-top: 2rem;
+}

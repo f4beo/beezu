@@ -5,9 +5,10 @@ import HexagonCheckbox from '../hex-checkbox/hexCheckbox';
 
 interface TaskCardProps {
   task: Activity;
+  className?: string;
 }
 
-export default function TaskCard({ task }: TaskCardProps) {
+export default function TaskCard({ task, className = '' }: TaskCardProps) {
   const date = new Date(task.deadline || '');
 
   const formattedDeadline = new Intl.DateTimeFormat('pt-BR', {
@@ -21,7 +22,7 @@ export default function TaskCard({ task }: TaskCardProps) {
     .replace(', ', ' - ');
 
   return (
-    <Card className={styles.container}>
+    <Card className={`${styles.container} ${className}`}>
       <HexagonCheckbox />
       <Card.Content className={styles.infoWrapper}>
         <h3 className={styles.taskTitle}>{task.title}</h3>
