@@ -1,0 +1,10 @@
+.container {
+  border-radius: 1.5rem;
+  min-width: 350px;
+  overflow: hidden;
+  border: solid 1px var(--neutral-200);
+}
+
+.taskItem {
+  border-radius: 0px;
+}

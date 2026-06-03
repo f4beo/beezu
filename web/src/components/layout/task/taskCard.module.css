@@ -1,5 +1,7 @@
 .container {
   display: flex;
+  overflow: hidden;
+  border: solid 1px var(--neutral-200);
   padding-left: 1.5rem;
 }
 
