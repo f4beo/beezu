@@ -10,10 +10,9 @@ type CardAuthProps = {
 export default function CardAuth({ children }: CardAuthProps) {
   return (
     <div className={styles.container}>
-      '{' '}
       <div className={styles.cardAuth}>
         <Image src={imagemLogo} alt="Logo da Beezu" className="logoBeezu" />
-        {children}'
+        {children}
       </div>
     </div>
   );

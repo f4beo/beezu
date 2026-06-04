@@ -15,7 +15,7 @@
   width: 100%;
   padding: 20px;
   border: 0px;
-
+  font-size: var(--text-xl);
   border-bottom: 4px solid var(--secondary-800);
   border-radius: 8px;
   box-sizing: border-box;
@@ -34,7 +34,24 @@
   padding-right: 100px !important;
   margin-top: 20px !important;
 }
+
 .botao:hover {
   background-color: var(--secondary-700) !important;
   transform: scale(1.05);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: auto;
+  justify-content: flex-start;
+}
+
+.errorSpan {
+  color: var(--accent-bad-600);
+  font-size: var(--text-lg);
+  font-family: var(--font-roboto-mono);
+  text-align: center;
 }
