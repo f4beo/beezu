@@ -1,0 +1,10 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  padding: 2rem;
+}
+
+.title {
+  font-size: var(--text-3xl);
+}
