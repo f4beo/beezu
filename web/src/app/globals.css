@@ -165,6 +165,15 @@ p {
   line-height: var(--leading-base);
 }
 
+a {
+  color: var(--text-base);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 body {
   margin: 0;
   background-color: var(--main-bg);

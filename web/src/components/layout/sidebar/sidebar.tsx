@@ -12,7 +12,7 @@ export default function Sidebar() {
     { name: 'Dashboard', href: '/dashboard' },
     { name: 'Atividades', href: '/atividades' },
     { name: 'Calendário', href: '/calendario' },
-    { name: 'Disciplinas', href: '/demotest' },
+    { name: 'Disciplinas', href: '/disciplinas' },
   ];
 
   return (
