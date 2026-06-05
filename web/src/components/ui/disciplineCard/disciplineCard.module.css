@@ -1,58 +1,38 @@
-.card{
-    height: 100%;
-    max-height: 380px;
-    width: 410px;
-    aspect-ratio: 1/1;
-    background-color: var(--primary-400);
-    border-radius: 8px;
-    position: relative;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
-    transition: transform 0.5s ease;
-    &:hover{
-        transform: scale(1.05);
-        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.7);
-    }
-    
+.card {
+  width: 320px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  }
 }
 
-.aboutDiscipline{
-    height: 100%;
-    max-height: 280px;
-    width: 100%;
-    background-color: var(--primary-100);
-    position: absolute;
-    bottom: 0;
-    padding: 20px;
-    border-radius: 8px;
-    
+/* Skeleton cinza claro sem animação no estilo Notion */
+.bannerSkeleton {
+  width: 100%;
+  height: 100px;
+  background-color: var(--primary-300);
 }
 
-.disciplineName{
-    font-size: 20px;
-    font-weight: bold;
-   
+.aboutDiscipline {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.iconTitle{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+.iconTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: 600;
+  font-size: var(--text-lg)
 }
 
-.professor{
-    font-size: 16px;
-    color: var(--secondary-600);
-}
-
-.semestre{
-    font-size: 14px;
-    
-    color: var(--neutral-600);
-    margin-top: 20px;
-    margin-bottom: 80px;
-}
-.enterButton{
-    width: 100%;
-    height: 40px;
-    
+.professor {
+  margin: 0 0 16px 0;
+  font-size: var(--text-base);
+  color: var(--neutral-500);
 }
