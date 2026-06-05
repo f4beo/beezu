@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useAuthStore } from '../store/authStore';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
 
@@ -31,6 +32,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       Cookies.remove('token');
+      useAuthStore().actions.logout();
       // TODO: Handle Redirect
     }
     return Promise.reject(error);
